@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>潘老师课堂抽问随机点名</title>
+    <style>
+        /* 页面整体样式 */
+        body {
+            background: linear-gradient(135deg, #a8c0ff, #3f2b96);
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 标题样式 */
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        /* 数学符号 */
+        .math-symbol {
+            font-size: 5rem;
+            color: #00bfff;
+            margin: 20px 0;
+        }
+
+        /* 函数图形绘制区域 */
+        #graphContainer {
+            width: 80%;
+            height: 200px;
+            margin-top: 50px;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        /* 函数图形构建 */
+        .graph-line {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.5);
+            animation: drawGraph 10s infinite linear;
+        }
+
+        /* 绘制函数图形动画 */
+        @keyframes drawGraph {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* 几何图形展示 */
+        #geometryShapes {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+        }
+
+        .shape {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #3f2b96;
+        }
+
+        .cylinder {
+            background: conic-gradient(#ff7f00, #ffb84d);
+        }
+
+        .pyramid {
+            background: conic-gradient(#ff4500, #ff6347);
+        }
+
+        .cube {
+            background: conic-gradient(#4682b4, #5f9ea0);
+        }
+
+        /* 按钮样式 */
+        .link {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            background-color: #00bfff;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 15px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .link:hover {
+            background-color: #009acd;
+        }
+
+        /* 背景粒子效果 */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: moveParticles 5s infinite linear;
+        }
+
+        @keyframes moveParticles {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(400px, 600px); }
+        }
+    </style>
+</head>
+<body>
+    <h1>潘老师课堂抽问随机点名</h1>
+    <div class="math-symbol">∑ ∫ √ ∆ π</div>
+
+    <div class="content">
+        <p>请选择班级进行点名：</p>
+        <a href="class20.html" class="link">进入20班</a>
+        <a href="class13.html" class="link">进入13班</a>
+    </div>
+
+
+
+
+    <!-- 背景粒子效果 -->
+    <div class="particles"></div>
+
+    <script>
+        // 动态生成粒子效果
+        const particleCount = 50;
+        const particlesContainer = document.querySelector('.particles');
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particlesContainer.appendChild(particle);
+
+            // 随机生成粒子的初始位置和动画
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            const size = Math.random() * 5 + 5; // 粒子大小
+            const animationDuration = Math.random() * 5 + 5; // 动画时长
+
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.animationDuration = `${animationDuration}s`;
+        }
+    </script>
+</body>
+</html>
